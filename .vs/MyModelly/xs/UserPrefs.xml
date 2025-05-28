@@ -1,0 +1,70 @@
+﻿<Properties StartupConfiguration="{184DC073-634C-448E-9615-035FF8DAB134}|https">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+    <Files>
+      <File FileName="appsettings.json" />
+      <File FileName="Program.cs" Line="19" Column="30" />
+      <File FileName="Views/_ViewStart.cshtml" />
+      <File FileName="MyModelly.csproj" />
+      <File FileName="Views/Shared/_LoginPartial.cshtml" />
+      <File FileName="Views/Shared/_Layout.cshtml" />
+      <File FileName="Controllers/HomeController.cs" />
+      <File FileName="Views/Home/Index.cshtml" />
+      <File FileName="Data/ApplicationDbContext.cs" />
+      <File FileName="Views/Home/Privacy.cshtml" />
+      <File FileName="Views/_ViewImports.cshtml" />
+      <File FileName="Properties/launchSettings.json" />
+      <File FileName="Views/Home/ShowDatabases.cshtml" />
+      <File FileName="Models/ErrorViewModel.cs" />
+      <File FileName="Views/Shared/_ValidationScriptsPartial.cshtml" />
+      <File FileName="Areas/Identity/Pages/_ViewStart.cshtml" />
+      <File FileName="Views/Shared/Error.cshtml" />
+      <File FileName="Views/Home/ShowTables.cshtml" />
+      <File FileName="ScaffoldingReadMe.txt" />
+      <File FileName="Areas/Identity/Pages/ApplicationDbContext.cs" />
+      <File FileName="Areas/Identity/Pages/Account/ExternalLogin.cshtml" />
+      <File FileName="Areas/Identity/Pages/Account/Login.cshtml" />
+      <File FileName="Models/ColumnModel.cs" />
+      <File FileName="Models/Table.cs" />
+      <File FileName="GlobalSuppressions.cs" />
+      <File FileName="Areas/Identity/Data/MyModellyIdentityDbContext.cs" />
+      <File FileName="Areas/Identity/Pages/Account/Register.cshtml" />
+      <File FileName="Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml" />
+      <File FileName="Areas/Identity/IdentityHostingStartup.cs" />
+      <File FileName="Models/User.cs" />
+      <File FileName="Migrations/ApplicationDbContextModelSnapshot.cs" />
+      <File FileName="Areas/Identity/Pages/AspNetUserLogin.cs" />
+      <File FileName="DataTransferObjects/UserForRegistrationDto.cs" />
+      <File FileName="DataTransferObjects/RegistrationResponseDto.cs" />
+      <File FileName="Controllers/AccountController.cs" />
+      <File FileName="MappingProfile.cs" />
+      <File FileName="DataTransferObjects/UserForAuthenticationDto.cs" />
+      <File FileName="DataTransferObjects/AuthResponseDto.cs" />
+      <File FileName="JwtFeatures/JwtHandler.cs" />
+      <File FileName="DataTransferObjects/ForgotPasswordDto.cs" />
+      <File FileName="EmailService/EmailConfiguration.cs" />
+      <File FileName="EmailService/EmailSender.cs" />
+      <File FileName="EmailService/IEmailSender.cs" />
+      <File FileName="EmailService/Message.cs" />
+      <File FileName="DataTransferObjects/ResetPasswordDto.cs" />
+      <File FileName="DataTransferObjects/ContactFormDto.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MyModelly">
+            <Node name="MyModelly">
+              <Node name="Controllers" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.MyModelly PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

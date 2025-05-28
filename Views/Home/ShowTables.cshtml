@@ -1,0 +1,133 @@
+﻿@model List<string>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No tables found for the selected database</p>
+    <div class="mb-3">
+        <a asp-action="ShowDatabases" class="btn btn-primary">Back to Databases</a>
+    </div>
+}
+else
+{
+    <h2>List of Tables in @ViewBag.SelectedDatabase</h2>
+
+    <div class="mb-3">
+        <a asp-action="ShowDatabases" class="btn btn-primary">Back to Databases</a>
+    </div>
+
+    <div class="mb-3">
+        <label for="searchTable" class="form-label">Search Table:</label>
+        <input type="text" id="searchTable" class="form-control" placeholder="Type to search...">
+    </div>
+
+    <div class="table-outer-container" style="max-height: 400px; overflow-y: auto;">
+        <div class="table-responsive">
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table class="table table-bordered table-striped" id="tableList">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Table Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var tableName in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="table-row-checkbox" data-table="@tableName" />
+                                </td>
+                                <td>@tableName</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <button id="generateCodeBtn" class="btn btn-primary" disabled onclick="generateCode()">Generate Code</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+
+    <script>
+        document.getElementById('searchTable').addEventListener('input', function () {
+            var searchText = this.value.toLowerCase();
+            var table = document.getElementById('tableList');
+            var rows = table.getElementsByTagName('tr');
+
+            for (var i = 1; i < rows.length; i++) {
+                var name = rows[i].getElementsByTagName('td')[1].innerText.toLowerCase();
+                if (name.includes(searchText)) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        });
+
+        var checkboxes = document.getElementsByClassName('table-row-checkbox');
+        var generateClassBtn = document.getElementById('generateCodeBtn');
+
+        function handleCheckboxChange() {
+            var checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
+            generateClassBtn.disabled = checkedCheckboxes.length === 0; // Disable if not exactly one checkbox is checked
+        }
+
+        Array.from(checkboxes).forEach(cb => {
+            cb.addEventListener('change', function () {
+                handleCheckboxChange();
+            });
+        });
+
+        function generateCode() {
+            var checkedCheckboxes = Array.from(checkboxes).filter(cb => cb.checked);
+
+            if (checkedCheckboxes.length === 0) {
+                alert("Please select at least one table.");
+                return;
+            }
+
+            // Extract the table names from the checked checkboxes
+            var selectedTables = checkedCheckboxes.map(cb => cb.dataset.table);
+            console.log(selectedTables);
+
+            var url = '@Url.Action("GenerateCode", "Home")';
+
+            // Use AJAX to send a POST request for each selected table
+             selectedTables.forEach(function (table) {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: { selectedDatabase: '@ViewBag.SelectedDatabase', selectedTables: [table] },
+            xhrFields: {
+                responseType: 'blob' // Set the response type to 'blob'
+            },
+            success: function (data) {
+    var filename = '@ViewBag.SelectedDatabase' + ".zip";
+
+    // Create a temporary link element to trigger the file download
+    var url = window.URL.createObjectURL(data);
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+
+    // Clean up
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+},
+            error: function (xhr, textStatus, errorThrown) {
+                // Handle error, e.g., display an error message
+                alert("Error generating code for " + table + ". Status: " + textStatus + ", Error: " + errorThrown);
+
+                // Log the error details to the console
+                console.error(xhr.responseText);
+            }
+        });
+    });
+        }
+    </script>
+}

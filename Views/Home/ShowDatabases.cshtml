@@ -1,0 +1,13 @@
+﻿@model List<string>
+
+<form method="post" asp-action="ShowTables">
+    <label for="selectedDatabase">Select a Database:</label>
+    <select name="selectedDatabase" id="selectedDatabase">
+        @foreach (var database in Model)
+        {
+            <option value="@database">@database</option>
+        }
+    </select>
+    <button type="submit">Show Tables</button>
+</form>
+
