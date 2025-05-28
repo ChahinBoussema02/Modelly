@@ -16,8 +16,8 @@ Database: SQL Server
 # Prerequisites:
 .NET SDK 7.0+
 
-# SQL Server
-Steps:
+SQL Server
+# Steps:
 git clone https://github.com/ChahinBoussema02/MyModelly.git
 cd MyModelly
 dotnet restore
